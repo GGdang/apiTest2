@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!--bootstrao的CSS掛載-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	    crossorigin="anonymous">
+	<!--自己的CSS掛載-->
+	<link rel="stylesheet" href="index.css">
+	<!--外掛的動畫-->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+
+<body>
+	<div class="Kaohsiung-food">
+		<div class="header">
+			<div class="container d-flex header-one">
+				<h1 class="text-white text-center display-3 pb-2">高雄市餐廳</h1>
+				<select name="" id="" class="form-control" @change="filterData" v-model="area">
+					<option value="">請選擇行政區.....</option>
+					<option v-for="item in kaohsiungDistrict" :value="item">{{item}}</option>
+				</select>
+			</div>
+		</div>
+		<div class="container mt-3 border border-danger" v-show="dataShow">
+			<div class="card-columns">
+				<div class="card mt-3" v-for="item in serchData">
+					<img :src="item.Picture1" alt="" class="card-img-top">
+					<div class="card-body">
+						<h4 class="card-title">
+							{{item.Name}}
+						</h4>
+						<p class="card-text">
+							{{item.Description}}
+						</p>
+						<hr>
+						<p>{{item.Add}}</p>
+						<hr>
+						<small class="text-muted">
+							{{item.Opentime}}
+						</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer bg-dark text-white text-center">
+			<p class="pt-2 h3">高雄餐廳網</p>
+			<p class="pb-2 h5">資料來源:高雄市政府</p>
+		</div>
+		<div class="modal fade" id="serchModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<p class="display-3">
+							查無資料......
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--jq掛載-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--bootstrao掛載-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	    crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	    crossorigin="anonymous"></script>
+	<!--vue掛載-->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<!--自己的JS掛載-->
+	<script src="index.js"></script>
+</body>
+
+</html>
